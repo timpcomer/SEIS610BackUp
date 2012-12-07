@@ -45,6 +45,17 @@ namespace GeneticProgramming
                 Individual tmp = currGen.ElementAt(i);
                 tmp.CalculateFitness();
 
+                //break condition?
+                if (tmp.Fitness == 0 && !tmp.DivideByZero)
+                {
+                    endTime = System.DateTime.Now;
+                    TimeSpan finalTime = endTime - startTime;
+
+                    Console.Write("Mission Complete, target individual " + i.ToString() + "found in " + _generationCount + " generations in " + finalTime);
+                    _running = false;
+                    return tmp;
+                }
+
                 if (tmp.DivideByZero)
                 {
                     currGen.Remove(tmp);
@@ -59,16 +70,7 @@ namespace GeneticProgramming
                     currGen.Insert(i, newInd);
                 }
 
-                //break condition?
-                if (tmp.Fitness == 0 && !tmp.DivideByZero)
-                {
-                    endTime = System.DateTime.Now;
-                    TimeSpan finalTime = endTime - startTime;
-                    
-                    Console.Write("Mission Complete, target individual " + i.ToString() + "found in " + _generationCount + " generations in " + finalTime);
-                    _running = false;
-                    return tmp;
-                }
+
             }
             
             sortGeneratartion(currGen);
