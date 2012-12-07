@@ -53,6 +53,7 @@ namespace GeneticProgramming
                         newInd = new Individual();
                         newInd.CalculateFitness();
                         tmp = newInd;
+                        tmp.CalculateFitness();
                     } while (newInd.DivideByZero);
 
                     currGen.Insert(i, newInd);
