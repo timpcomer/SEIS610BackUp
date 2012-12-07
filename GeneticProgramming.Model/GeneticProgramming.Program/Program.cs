@@ -61,6 +61,7 @@ namespace GeneticProgramming
             
             while (gm.Running)
             {
+                Console.Write("\r{0}", "Gen" + gm.GenerationCount);
                 Individual bestSoFar = gm.getNextGenerationTournamentStyle();
                 //Individual bestSoFar = gm.getNextGeneration();
                 //Console.ReadKey();
@@ -68,11 +69,11 @@ namespace GeneticProgramming
                 
                 //gm.printCurrentGenerationToConsole();
 
-
-               Console.WriteLine("Gen" + gm.GenerationCount + " " + bestSoFar.Fitness + " | " + bestSoFar.ToString());
+              
+               //Console.WriteLine("Gen" + gm.GenerationCount + " " + bestSoFar.Fitness + " | " + bestSoFar.ToString());
                // Console.WriteLine("------------");
                // Console.ReadKey();
-                if (gm.GenerationCount > 2000)
+                if (gm.GenerationCount > Settings.HardResetGenerationCount)
                 {
                     gm = new GenerationManager();
                 }

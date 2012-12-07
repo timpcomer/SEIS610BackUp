@@ -50,8 +50,8 @@ namespace GeneticProgramming
                 {
                     endTime = System.DateTime.Now;
                     TimeSpan finalTime = endTime - startTime;
-
-                    Console.Write("Mission Complete, target individual " + i.ToString() + "found in " + _generationCount + " generations in " + finalTime);
+                    Console.WriteLine();
+                    Console.Write("Job Complete, target individual " + tmp.ToString() + " found in " + _generationCount + " generations in " + finalTime);
                     _running = false;
                     return tmp;
                 }
@@ -64,7 +64,6 @@ namespace GeneticProgramming
                         newInd = new Individual();
                         newInd.CalculateFitness();
                         tmp = newInd;
-                        tmp.CalculateFitness();
                     } while (newInd.DivideByZero);
 
                     currGen.Insert(i, newInd);
